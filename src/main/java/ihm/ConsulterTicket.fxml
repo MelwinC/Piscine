@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControlConsulterTicket">
+   <children>
+      <Text layoutX="161.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le code situé sur votre ticket :">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfCode" layoutX="219.0" layoutY="275.0" prefHeight="25.0" prefWidth="319.0" />
+      <Button layoutX="311.0" layoutY="353.0" mnemonicParsing="false" onAction="#checkTicket" prefHeight="35.0" prefWidth="135.0" text="Scanner ticket">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="lErreur" layoutX="219.0" layoutY="303.0" text="Label" />
+      <Pane fx:id="pInfosTicket" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Text layoutX="245.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations de votre ticket">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Label fx:id="lCode" layoutX="285.0" layoutY="200.0" text="label" />
+            <Label layoutX="245.0" layoutY="200.0" text="Code : " />
+            <Label layoutX="245.0" layoutY="225.0" text="Date d'achat :" />
+            <Label layoutX="245.0" layoutY="250.0" text="Date d'expiration :" />
+            <Label layoutX="245.0" layoutY="275.0" text="Offre : " />
+            <Label layoutX="245.0" layoutY="300.0" text="Utilisations restantes : " />
+            <Label fx:id="lDateAchat" layoutX="325.0" layoutY="225.0" text="label" />
+            <Label fx:id="lDateExp" layoutX="345.0" layoutY="250.0" text="label" />
+            <Label fx:id="lOffre" layoutX="285.0" layoutY="275.0" text="label" />
+            <Label fx:id="lUtilisations" layoutX="365.0" layoutY="300.0" text="label" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="110.0" fitWidth="103.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/logo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="15.0" layoutY="460.0" mnemonicParsing="false" onAction="#toAccueil" prefHeight="25.0" prefWidth="75.0" text="Retour">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

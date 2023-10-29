@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="500.0" maxWidth="750.0" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControlAdminOffres">
+   <children>
+      <TableView fx:id="offreTable" layoutX="115.0" layoutY="157.0" onMouseClicked="#selectionnerOffre" prefHeight="250.0" prefWidth="520.0">
+         <columns>
+            <TableColumn fx:id="nomOffre" prefWidth="130.0" text="Nom" />
+            <TableColumn fx:id="validiteOffre" prefWidth="130.0" text="Validité (en jours)" />
+            <TableColumn fx:id="tarifOffre" prefWidth="130.0" text="Tarif (en euros)" />
+            <TableColumn fx:id="nbUtilOffre" prefWidth="130.0" text="Nombre utilisations" />
+         </columns>
+      </TableView>
+      <Text layoutX="202.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez sélectionner une offre">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Button layoutX="15.0" layoutY="460.0" mnemonicParsing="false" onAction="#toAdmin" prefHeight="25.0" prefWidth="75.0" text="Retour">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="625.0" layoutY="15.0" mnemonicParsing="false" onAction="#creerOffre" prefHeight="25.0" prefWidth="110.0" text="Créer une offre" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Button>
+      <Pane fx:id="pModifOffre" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Button layoutX="15.0" layoutY="460.0" mnemonicParsing="false" onAction="#annuler" prefHeight="25.0" prefWidth="75.0" text="Annuler">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Text layoutX="275.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre utilisations :" />
+            <TextField fx:id="tfNbUtil" layoutX="390.0" layoutY="290.0" prefHeight="25.0" prefWidth="50.0" />
+            <Text layoutX="275.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Validite (en jours) :" />
+            <Text layoutX="275.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :" />
+            <Text layoutX="275.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarif :" />
+            <TextField fx:id="tfTarif" layoutX="310.0" layoutY="255.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="tfValidite" layoutX="380.0" layoutY="220.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="tfNom" layoutX="315.0" layoutY="185.0" />
+            <Button layoutX="318.0" layoutY="357.0" mnemonicParsing="false" onAction="#updateOffre" prefHeight="25.0" prefWidth="110.0" text="Modifier l'offre">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Text layoutX="279.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Offre sélectionnée">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <Label fx:id="lErreur" layoutX="272.0" layoutY="113.0" text="Veuillez remplir tous les champs ci-dessous :" textFill="RED" />
+            <Button layoutX="620.0" layoutY="15.0" mnemonicParsing="false" onAction="#deleteOffre" prefHeight="25.0" prefWidth="115.0" text="Supprimer l'offre">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+         </children>
+      </Pane>
+      <Pane fx:id="pConfirmUpdate" layoutX="235.0" layoutY="185.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: grey; -fx-border-width: 3;" visible="false">
+         <children>
+            <Text layoutX="27.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Êtes-vous sûr de vouloir supprimer cet offre ?" />
+            <Button layoutX="95.0" layoutY="80.0" mnemonicParsing="false" onAction="#confirmDel" prefHeight="25.0" prefWidth="45.0" text="Oui" />
+            <Button layoutX="160.0" layoutY="80.0" mnemonicParsing="false" onAction="#annulerDel" prefHeight="25.0" prefWidth="45.0" text="Non" />
+         </children>
+      </Pane>
+      <Pane fx:id="pCreationOffre" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Button layoutX="15.0" layoutY="460.0" mnemonicParsing="false" onAction="#annuler" prefHeight="25.0" prefWidth="75.0" text="Annuler">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="332.0" layoutY="364.0" mnemonicParsing="false" onAction="#confirmCrea" text="Créer l'offre">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Text layoutX="260.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Création d'une offre">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <Label fx:id="lErreurCrea" layoutX="258.0" layoutY="112.0" text="Veuillez remplir tous les champs ci-dessous :" textFill="RED" />
+            <Text layoutX="281.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :" />
+            <Text layoutX="281.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Validite (en jours) :" />
+            <Text layoutX="281.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarif :" />
+            <Text layoutX="281.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre utilisations :" />
+            <TextField fx:id="tfNomCrea" layoutX="321.0" layoutY="178.0" />
+            <TextField fx:id="tfValiditeCrea" layoutX="386.0" layoutY="217.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="tfTarifCrea" layoutX="316.0" layoutY="258.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="tfNbUtilCrea" layoutX="396.0" layoutY="298.0" prefHeight="25.0" prefWidth="50.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="pConfirmCrea" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Text layoutX="178.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La création de l'offre est un succès">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <Button layoutX="287.0" layoutY="341.0" mnemonicParsing="false" onAction="#toAdmin" text="Retourner à l'accueil Admin">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <ImageView fitHeight="110.0" fitWidth="103.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

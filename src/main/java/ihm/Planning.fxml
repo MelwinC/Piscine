@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControlPlanning">
+   <children>
+      <Pane fx:id="pPlanning" prefHeight="500.0" prefWidth="750.0">
+         <children>
+            <TableView fx:id="planningTable" layoutX="66.0" layoutY="115.0" onMouseClicked="#selectionnerCours" prefHeight="311.0" prefWidth="620.0">
+              <columns>
+                <TableColumn fx:id="nomPiscine" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Piscine" />
+                <TableColumn fx:id="nomEmploye" prefWidth="95.0" style="-fx-alignment: CENTER;" text="Employe" />
+                  <TableColumn fx:id="date" prefWidth="166.0" style="-fx-alignment: CENTER;" text="Date" />
+                  <TableColumn fx:id="horaireDebut" prefWidth="102.0" style="-fx-alignment: CENTER;" text="Horaire Début" />
+                  <TableColumn fx:id="horaireFin" prefWidth="83.0" style="-fx-alignment: CENTER;" text="Horaire Fin" />
+                  <TableColumn fx:id="nbPlaces" prefWidth="98.0" style="-fx-alignment: CENTER;" text="Nombres places" />
+              </columns>
+            </TableView>
+            <Text layoutX="274.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cours disponibles">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <Button layoutX="15.0" layoutY="460.0" mnemonicParsing="false" onAction="#toAccueil" prefHeight="25.0" prefWidth="75.0" text="Retour">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="pReservation" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Text fx:id="titre1" layoutX="295.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cours sélectionné" wrappingWidth="169.259765625">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="306.0" layoutY="357.0" mnemonicParsing="false" onAction="#reserver" prefHeight="30.0" prefWidth="110.0" styleClass="boutonAcc" text="Réserver">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Button layoutX="15.0" layoutY="460.0" mnemonicParsing="false" onAction="#annuler" prefHeight="25.0" prefWidth="75.0" text="Annuler">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Label fx:id="lFin" layoutX="373.0" layoutY="273.0" text="Label" />
+            <Label fx:id="lDebut" layoutX="388.0" layoutY="248.0" text="Label" />
+            <Label fx:id="lDateCours" layoutX="333.0" layoutY="223.0" text="Label" />
+            <Text layoutX="293.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de fin :" />
+            <Text layoutX="293.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de début :" />
+            <Text layoutX="293.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" />
+            <Text layoutX="293.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piscine :" />
+            <Label fx:id="lPiscine" layoutX="348.0" layoutY="198.0" text="Label" />
+         </children>
+      </Pane>
+      <Pane fx:id="pValidationCode" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Text layoutX="189.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le code situé sur votre ticket" wrappingWidth="393.978515625">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField fx:id="tfCode" layoutX="183.0" layoutY="241.0" prefHeight="30.0" prefWidth="386.0" />
+            <Label fx:id="lErreur" layoutX="183.0" layoutY="271.0" prefHeight="17.0" prefWidth="258.0" />
+            <Button layoutX="15.0" layoutY="460.0" mnemonicParsing="false" onAction="#annuler" prefHeight="25.0" prefWidth="75.0" text="Annuler">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Button layoutX="338.0" layoutY="347.0" mnemonicParsing="false" onAction="#valider" prefHeight="25.0" prefWidth="75.0" styleClass="boutonAcc" text="Valider">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+         </children>
+      </Pane>
+      <Pane fx:id="pReservationOk" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Text layoutX="237.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Votre réservation a été validée">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="296.0" layoutY="311.0" mnemonicParsing="false" onAction="#toAccueil" prefHeight="35.0" prefWidth="150.0" text="Retourner à l'accueil">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="pErreurReservation" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Button layoutX="308.0" layoutY="302.0" mnemonicParsing="false" onAction="#retourPlanning" prefHeight="35.0" prefWidth="135.0" text="Retour au planning">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Label fx:id="lErreurReservation" layoutX="153.0" layoutY="183.0" text="label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="110.0" fitWidth="103.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
